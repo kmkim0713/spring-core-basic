@@ -1,7 +1,26 @@
 package com.example.springclass;
 
+import com.example.springclass.member.Grade;
+import com.example.springclass.member.Member;
+import com.example.springclass.member.MemberService;
+import com.example.springclass.member.MemberServiceImpl;
+import com.example.springclass.order.Order;
+import com.example.springclass.order.OrderService;
+import com.example.springclass.order.OrderServiceImpl;
+
 public class OrderApp {
-    //https://www.inflearn.com/course/lecture?courseSlug=%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8%ED%8E%B8&unitId=55340&tab=curriculum&subtitleLanguage=ko
-    // 여기서부터
+    public static void main(String[] args) {
+        MemberService memberService = new MemberServiceImpl();
+        OrderService orderService = new OrderServiceImpl();
+
+        Long memberId = 1L;
+        Member member = new Member(memberId, "memberA", Grade.VIP);
+        memberService.join(member);
+
+        Order order = orderService.createOrder(memberId, "itemA", 10000);
+        System.out.println("order = " + order);
+        System.out.println("order = " + order.calculatePrice());
+    }
+
 }
 
