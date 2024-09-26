@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
+    // IOC: 제어의 역전
+    // spring container = DI container
     @Bean
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
